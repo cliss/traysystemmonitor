@@ -1,6 +1,8 @@
 # Tray System Monitor
 Small system monitor that lives in the Windows tray
 
+![Demo video](http://www.caseyliss.com/images/2015/10/tray-system-monitor.gif)
+
 # Usage
 Tray System Monitor is a small monitor that shows two graphs in the Windows tray. You can select which monitors you'd like to see. Out of the box, the following are provided:
 
