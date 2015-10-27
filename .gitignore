@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # Casey additions
 ._*
+.DS_Store
