@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <ProductVersion>8.0.50727</ProductVersion>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>App.ico</ApplicationIcon>
-    <TargetFramework>net451</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <FileUpgradeFlags />
     <UpgradeBackupLocation />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -27,6 +27,7 @@
     <Description>Application to monitor your system resources.  Release build.</Description>
     <Copyright>Copyright © Casey Liss 2007-2015</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -36,12 +37,7 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="MainForm.cs" />
     <Compile Update="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
@@ -72,6 +68,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Casey.TraySystemMonitor.Biz\Casey.TraySystemMonitor.Biz.csproj" />
     <ProjectReference Include="..\Casey.TraySystemMonitor.Ext\Casey.TraySystemMonitor.Ext.csproj" />
+    <PackageReference Include="System.Resources.Extensions" Version="4.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />

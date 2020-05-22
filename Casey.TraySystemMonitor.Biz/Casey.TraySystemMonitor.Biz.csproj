@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <ProductVersion>8.0.50727</ProductVersion>
-    <TargetFramework>net451</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <FileUpgradeFlags />
     <UpgradeBackupLocation />
     <PublishUrl>publish\</PublishUrl>
@@ -24,6 +24,7 @@
     <Product>Casey.TraySystemMonitor.Biz</Product>
     <Copyright>Copyright © Casey Liss 2007-2015</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Description>Buisness objects and status providers for TraySystemMonitor. Debug build.</Description>
@@ -36,7 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Management" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Casey.TraySystemMonitor.Ext\Casey.TraySystemMonitor.Ext.csproj" />
@@ -54,5 +54,8 @@
     <EmbeddedResource Include="Images\NetworkDownstream.png" />
     <EmbeddedResource Include="Images\NetworkUpDown.png" />
     <EmbeddedResource Include="Images\NetworkUpstream.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
 </Project>
