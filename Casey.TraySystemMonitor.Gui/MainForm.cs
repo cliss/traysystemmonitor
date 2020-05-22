@@ -83,8 +83,9 @@ namespace Casey.TraySystemMonitor.Gui
             // Establish the context menu
             if (!_prefs.FancyMenu)
             {
-                _notifyIcon.ContextMenu = new ContextMenu();
-                _notifyIcon.ContextMenu.Popup += OnContextMenuPopUp;
+                throw new NotSupportedException("Currently not supported in .NET Core");
+                //_notifyIcon.ContextMenu = new ContextMenu();
+                //_notifyIcon.ContextMenu.Popup += OnContextMenuPopUp;
             }
             else
             {
@@ -141,29 +142,30 @@ namespace Casey.TraySystemMonitor.Gui
         /// <param name="e">Event arguments</param>
         void OnContextMenuPopUp(object sender, EventArgs e)
         {
-            ContextMenu trayMenu = _notifyIcon.ContextMenu;
-            trayMenu.MenuItems.Clear();
+            throw new NotSupportedException("Currently not supported in .NET Core");
+            //ContextMenu trayMenu = _notifyIcon.ContextMenu;
+            //trayMenu.MenuItems.Clear();
 
-            // Fill the available providers
-            MenuItem left = new MenuItem("Left");
-            MenuItem right = new MenuItem("Right");
-            AddMenuItems(left, MenuTag.DisplaySide.Left, _left);
-            AddMenuItems(right, MenuTag.DisplaySide.Right, _right);
+            //// Fill the available providers
+            //MenuItem left = new MenuItem("Left");
+            //MenuItem right = new MenuItem("Right");
+            //AddMenuItems(left, MenuTag.DisplaySide.Left, _left);
+            //AddMenuItems(right, MenuTag.DisplaySide.Right, _right);
 
-            // Left/right sides and separator
-            trayMenu.MenuItems.Add(left);
-            trayMenu.MenuItems.Add(right);
-            trayMenu.MenuItems.Add("-");
+            //// Left/right sides and separator
+            //trayMenu.MenuItems.Add(left);
+            //trayMenu.MenuItems.Add(right);
+            //trayMenu.MenuItems.Add("-");
 
-            // Center line
-            MenuItem center = new MenuItem("Center line", new EventHandler(OnCenterlineMenuClick));
-            center.Checked = _prefs.Centerline;
-            trayMenu.MenuItems.Add(center);
-            trayMenu.MenuItems.Add("-");
+            //// Center line
+            //MenuItem center = new MenuItem("Center line", new EventHandler(OnCenterlineMenuClick));
+            //center.Checked = _prefs.Centerline;
+            //trayMenu.MenuItems.Add(center);
+            //trayMenu.MenuItems.Add("-");
 
-            // About/Exit
-            trayMenu.MenuItems.Add(new MenuItem("&About", new EventHandler(OnAboutMenuClick)));
-            trayMenu.MenuItems.Add(new MenuItem("E&xit", new EventHandler(OnExitMenuClick)));
+            //// About/Exit
+            //trayMenu.MenuItems.Add(new MenuItem("&About", new EventHandler(OnAboutMenuClick)));
+            //trayMenu.MenuItems.Add(new MenuItem("E&xit", new EventHandler(OnExitMenuClick)));
         }
 
         /// <summary>
@@ -173,12 +175,13 @@ namespace Casey.TraySystemMonitor.Gui
         /// <param name="e">Event arguments</param>
         void OnProviderMenuItemClick(object sender, EventArgs e)
         {
-            MenuItem item = sender as MenuItem;
-            if (item != null)
-            {
-                MenuTag tag = item.Tag as MenuTag;
-                HandleProviderSwitch(tag);
-            }
+            throw new NotSupportedException("Currently not supported in .NET Core");
+            //MenuItem item = sender as MenuItem;
+            //if (item != null)
+            //{
+            //    MenuTag tag = item.Tag as MenuTag;
+            //    HandleProviderSwitch(tag);
+            //}
         }
 
         /// <summary>
@@ -303,13 +306,14 @@ namespace Casey.TraySystemMonitor.Gui
         /// <param name="e">Event arguments</param>
         void OnCenterlineMenuClick(object sender, EventArgs e)
         {
-            MenuItem item = sender as MenuItem;
-            if (item != null)
-            {
-                // Note the Checked property hasn't changed yet.
-                _prefs.Centerline = !item.Checked;
-                UpdatePreferences();
-            }
+            throw new NotSupportedException("Currently not supported in .NET Core");
+            //MenuItem item = sender as MenuItem;
+            //if (item != null)
+            //{
+            //    // Note the Checked property hasn't changed yet.
+            //    _prefs.Centerline = !item.Checked;
+            //    UpdatePreferences();
+            //}
         }
 
         /// <summary>
@@ -328,28 +332,28 @@ namespace Casey.TraySystemMonitor.Gui
             }
         }
 
-        /// <summary>
-        /// Adds all the providers to the given menu
-        /// </summary>
-        /// <param name="root">Root menu item</param>
-        /// <param name="side">Which side we're on</param>
-        /// <param name="current">Current status provider on this side</param>
-        void AddMenuItems(
-           MenuItem root,
-           MenuTag.DisplaySide side,
-           EXT.IStatusProvider current)
-        {
-            foreach (EXT.IStatusProvider provider in _providers)
-            {
-                MenuItem item = new MenuItem(provider.Name);
-                item.Tag = new MenuTag(side, provider);
-                item.Checked = ReferenceEquals(current, provider);
-                item.Enabled = !ReferenceEquals(current, provider);
-                item.Click += OnProviderMenuItemClick;
+        ///// <summary>
+        ///// Adds all the providers to the given menu
+        ///// </summary>
+        ///// <param name="root">Root menu item</param>
+        ///// <param name="side">Which side we're on</param>
+        ///// <param name="current">Current status provider on this side</param>
+        //void AddMenuItems(
+        //   MenuItem root,
+        //   MenuTag.DisplaySide side,
+        //   EXT.IStatusProvider current)
+        //{
+        //    foreach (EXT.IStatusProvider provider in _providers)
+        //    {
+        //        MenuItem item = new MenuItem(provider.Name);
+        //        item.Tag = new MenuTag(side, provider);
+        //        item.Checked = ReferenceEquals(current, provider);
+        //        item.Enabled = !ReferenceEquals(current, provider);
+        //        item.Click += OnProviderMenuItemClick;
 
-                root.MenuItems.Add(item);
-            }
-        }
+        //        root.MenuItems.Add(item);
+        //    }
+        //}
 
         /// <summary>
         /// Adds all the providers to the given menu
